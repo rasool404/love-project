@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For My Love</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: #bb66d2;
+        font-family: "Arial", sans-serif;
+        text-align: center;
+      }
+
+      .container {
+        background: #fff;
+        border-radius: 15px;
+        padding: 20px 40px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        max-width: 600px; /* Set max width to ensure container doesn't stretch too far on large screens */
+        width: 100%; /* Allow it to be responsive */
+      }
+
+      h1 {
+        font-size: 2.5em;
+        color: #d63484;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        font-style: italic;
+        color: #d80032;
+      }
+
+      .counter {
+        font-size: 3em;
+        color: #333;
+        margin: 20px 0;
+      }
+
+      .date {
+        font-size: 1em;
+        color: #555;
+      }
+
+      /* Bouncy button styles */
+      .bounce-button {
+        margin-top: 20px;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        background-color: #73bbc9;
+        color: #fce9f1;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        outline: none;
+        text-decoration: none;
+        display: inline-block;
+        animation: bounce 1.5s infinite;
+      }
+
+      /* Bouncing animation */
+      @keyframes bounce {
+        0% {
+          transform: translateY(0);
+        }
+        25% {
+          transform: translateY(-10px);
+        }
+        50% {
+          transform: translateY(0);
+        }
+        75% {
+          transform: translateY(-5px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      /* Media Queries for responsiveness */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2em;
+        }
+
+        h2 {
+          font-size: 1.2rem;
+        }
+
+        .counter {
+          font-size: 2.5em;
+        }
+
+        .bounce-button {
+          font-size: 1em;
+          padding: 12px 25px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.8em;
+        }
+
+        h2 {
+          font-size: 1rem;
+        }
+
+        .counter {
+          font-size: 2em;
+        }
+
+        .container {
+          padding: 20px;
+        }
+
+        .bounce-button {
+          font-size: 0.9em;
+          padding: 10px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>We Have Been In Love For</h1>
+      <div class="counter" id="days-counter">0</div>
+      <h2>and I will love you forever&#10084;</h2>
+      <!-- <p class="date" id="start-date">Start Date: 2024-08-25</p> -->
+      <!-- Bouncy Link -->
+      <a href="flower.html" class="bounce-button">Click Me</a>
+    </div>
+
+    <script>
+      // Set the date you started your relationship
+      const startDate = new Date("2024-08-25"); // Change to your start date (YYYY-MM-DD)
+
+      // Update the counter dynamically
+      function updateCounter() {
+        const today = new Date();
+        const timeDifference = today - startDate;
+
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+          (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        // Display the time together
+        document.getElementById(
+          "days-counter"
+        ).textContent = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+      }
+
+      // Initialize counter and update every second
+      updateCounter();
+      setInterval(updateCounter, 1000);
+    </script>
+  </body>
+</html>
